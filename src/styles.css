@@ -1,0 +1,148 @@
+/* Custom Styles & Animation for ATTSA Interactive Website */
+
+/* Smooth scrolling with fixed header offset */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edffe3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aecdc0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #476459;
+}
+
+/* Accessible focus visible outlines */
+:focus-visible {
+  outline: 2px solid #e4c27f;
+  outline-offset: 2px;
+}
+
+/* Modal and dialog transitions */
+dialog {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 95vw;
+  max-height: 94vh;
+  margin: auto;
+}
+
+@media (max-width: 640px) {
+  dialog {
+    width: calc(100vw - 1.5rem);
+    max-height: 92vh;
+    margin: auto;
+  }
+}
+
+.modal-content-box {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  background: rgba(0, 24, 16, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: backdropFadeIn 0.25s ease-out forwards;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-animate-in {
+  animation: modalPopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Mobile Drawer Transitions */
+.mobile-drawer {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.mobile-drawer-backdrop {
+  transition: opacity 0.3s ease;
+}
+
+/* Interactive Card Hover Polish */
+.interactive-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 24, 16, 0.08), 0 8px 10px -6px rgba(0, 24, 16, 0.04);
+}
+
+/* Toast Notification Animation */
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast-animate {
+  animation: toastSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Line Clamp Utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Print Stylesheet for Official Reports & Memorandums */
+@media print {
+  header, footer, .no-print, .mobile-drawer, dialog::backdrop {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  dialog {
+    position: static !important;
+    display: block !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "attsa-website",
+  "version": "1.0.0",
+  "description": "Assam Tea Tribes Students Association Interactive Website Demo",
+  "scripts": {
+    "dev": "vite --host --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --port 5173"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}
